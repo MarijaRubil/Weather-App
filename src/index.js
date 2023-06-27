@@ -122,8 +122,23 @@ const Weather = () => {
                 var dt = new Date(hour.item.dt * 1000);
                 return(
                     <View style={styles.hour}>
+                        <Text style={{fontWeight:'bold', color:'black',}}>
+                             {dt.toLocaleTimeString().replace(/:\d+ /, '')}
+                        </Text>
+                        <Text style={{fontWeight:'bold', color:'black',}}>
+                            {Math.round(hour.item.temp)}°C
+                        </Text>
+                        <Image
+                            style={styles.smallIcon}
+                            source={{
+                                uri: `http://openweathermap.org/img/wn/${weather.icon}@4x.png`
+
+                            }}
+                        />
+
                         <Text style={{fontWeight:'bold', color:'#fff',}}>
-                         </Text>
+                            {weather.description}
+                        </Text>
                      </View>
                 )
                                   
@@ -138,9 +153,9 @@ const Weather = () => {
 
                     export default Weather;
 
+
+
                     //Style sheet
-
-
 
                     const styles = StyleSheet.create({
                     container: {
@@ -187,11 +202,12 @@ const Weather = () => {
                         justifyContent:'space-between',
                         padding:10
                     },
-                    feels:{
-                        fontSize:20,
-                        color:'black',
-                        textAlign: 'center'
-                    },
+                    feels: {
+                        fontSize: 20,
+                        color: 'black',
+                        textAlign: 'center',
+                      },
+                      
                     text:{
                         fontSize:20,
                         color:'black',
@@ -205,4 +221,12 @@ const Weather = () => {
                         fontWeight:'bold' 
 
               },
+              hour:{
+                padding:6,
+                alignItems: "center"
+              },
+              smallIcon:{
+                width:100,
+                height:100
+              }
    });
